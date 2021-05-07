@@ -1,7 +1,7 @@
 <template>
 <div>
   <h2 :class="{'open' : open}" @click="openClose"><span>{{ name }}</span><span>{{ sigle }}</span></h2>
-  <store v-show="open" v-for="store in stores" :key="store.id" :id="store.id" :name="store.name" :url="url"></store>
+  <store v-show="open" v-for="store in stores" :key="store.id" :id="store.id" :name="store.name" :api="api"></store>
 </div>
 </template>
 
@@ -9,7 +9,7 @@
 import Store from "@/components/Store";
 export default {
   name: "StoreGroupe",
-  props: ['name', 'stores', 'url'],
+  props: ['name', 'stores', 'api'],
   components: {
     Store
   },

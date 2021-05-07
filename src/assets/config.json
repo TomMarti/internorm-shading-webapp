@@ -2,7 +2,7 @@
   "url": "http://192.168.5.106",
   "groupes": [
     {
-      "name": "pierre",
+      "name": "Expedition",
       "stores": [
         {
           "id": 11,
@@ -11,7 +11,7 @@
       ]
     },
     {
-      "name": "fabrice",
+      "name": "Conférence",
       "stores": [
         {
           "id": 26,
@@ -32,7 +32,7 @@
       ]
     },
     {
-      "name": "tom",
+      "name": "Moteur",
       "stores": [
         {
           "id": 28,
@@ -49,7 +49,7 @@
       ]
     },
     {
-      "name": "gustavo, sophie & andré",
+      "name": "Administration",
       "stores": [
         {
           "id": 37,
@@ -78,7 +78,7 @@
       ]
     },
     {
-      "name": "muriel",
+      "name": "Production",
       "stores": [
         {
           "id": 17,
@@ -115,7 +115,7 @@
       ]
     },
     {
-      "name": "laser",
+      "name": "Laser",
       "stores": [
         {
           "id": 13,
@@ -136,7 +136,7 @@
       ]
     },
     {
-      "name": "boris & florian",
+      "name": "R&D",
       "stores": [
         {
           "id": 9,
