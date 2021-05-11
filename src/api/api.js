@@ -4,7 +4,9 @@ export default class API {
     constructor(url) {
         this.url = url
         this.statesQueue = []
-        this.doStateRequest()
+
+        this.initStates = []
+        this.loadStates()
     }
 
     request (url, route, params, callback) {
@@ -32,25 +34,38 @@ export default class API {
     state (id, callback) {
         let route = "/command?XC_FNC=ingetstate"
         let params = "&adr=" + id
-        this.statesQueue.push(
-            {
-                route: route,
-                params: params,
-                callback: callback
+        this.request(this.url, route, params, (res) => {
+            callback(res)
+        })
+    }
+
+    loadStates () {
+        let route = "/command?XC_FNC=GetStates"
+        let params = ""
+        this.request(this.url, route, params, (res) => {
+            if (res.data.includes("{XC_SUC}")) {
+                this.initStates = JSON.parse(res.data.replace("{XC_SUC}", ""))
+                if (this.statesQueue.length !== 0) {
+                    this.statesQueue.forEach(state => {
+                        state.callback(this.extractState(state.id))
+                    })
+                }
             }
-        )
+        })
     }
 
-    stateRequest (request, statesQueue, url) {
-        if (statesQueue.length > 0) {
-            let state = statesQueue.pop(0)
-            request(url, state.route, state.params, state.callback).then(res => {
-                state.callback(res)
+    extractState (id) {
+        return this.initStates.filter(value => parseInt(value.adr) === id && value.type === "IN")
+    }
+
+    getState (id, callback) {
+        if (this.initStates.length === 0) {
+            this.statesQueue.push({
+                id: id,
+                callback: callback
             })
+        } else {
+            callback(this.extractState(id))
         }
-    }
-
-    doStateRequest () {
-        setInterval(this.stateRequest, 500, this.request, this.statesQueue, this.url)
     }
 }
