@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-    <h1>Gestion de ces ****** de store</h1>
+    <h1>Gestion des stores</h1>
     <store-groupe v-for="groupe in config.groupes" :key="groupe.id" :api="api" :name="groupe.name" :stores="groupe.stores"></store-groupe>
+    <div>
+      <input style="display: none;" type="number" v-model="toTest" />
+      <button style="display: none;"  @click="sendToTest">Send message</button>
+    </div>
   </div>
 </template>
 
@@ -14,11 +18,18 @@ export default {
   data () {
     return {
       config: data,
-      api: new API(data.url)
+      api: new API(data.url),
+      toTest: 31
     }
   },
   components: {
     StoreGroupe
+  },
+  methods: {
+    sendToTest () {
+      let val = Number(100).toString(16).toUpperCase()
+      this.api.opening(Number(this.toTest), val, (res) => {console.log(res)})
+    }
   }
 }
 </script>

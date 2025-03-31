@@ -1,5 +1,5 @@
 {
-  "url": "http://192.168.5.106",
+  "url": "http://192.168.44.80",
   "groupes": [
     {
       "name": "Expedition",
@@ -177,6 +177,32 @@
         {
           "id": 1,
           "name": "10"
+        }
+      ]
+    },
+    {
+      "name": "Bobines",
+      "stores": [
+        {
+          "id": 35,
+          "name": "2"
+        }
+      ]
+    },
+    {
+      "name": "Rotors",
+      "stores": [
+        {
+          "id": 34,
+          "name": "1"
+        },
+        {
+          "id": 33,
+          "name": "2"
+        },
+        {
+          "id": 32,
+          "name": "3"
         }
       ]
     }
